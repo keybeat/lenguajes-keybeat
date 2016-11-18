@@ -5,6 +5,9 @@
  */
 package concurrencia;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author T-107
@@ -29,8 +32,16 @@ public class Principal implements Runnable {
     Thread t3= new Thread(new Runnable(){
         @Override
         public void run() {
-           
-        }
+            while(true){
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         
+            System.out.println("Soy un background Thread..");
+            }
+            }
         
     });
     t3.start();
